@@ -43,7 +43,7 @@ import org.polarsys.capella.core.commandline.core.DefaultCommandLine;
  */
 public class M2DocCommandLine extends DefaultCommandLine {
 
-	private String[] genconfs = new String[1];
+	private String[] genconfs;// = new String[1];
 
 	/**
 	* 
@@ -74,7 +74,9 @@ public class M2DocCommandLine extends DefaultCommandLine {
 
 		startFakeWorkbench();
 
-		genconfs[0] = "platform:/resource/" + CommandLineArgumentHelper.getInstance().getFilePath();
+		String filepath = CommandLineArgumentHelper.getInstance().getFilePath();
+		genconfs = filepath.split(" ");
+
 		Collection<URI> genconfsURIs = validateArguments();
 
 		boolean somethingWentWrong = false;
